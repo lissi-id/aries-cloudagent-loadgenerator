@@ -2,6 +2,10 @@
 
 This repository is a fork of the [Aries Cloud Agent Load Generator](https://github.com/My-DIGI-ID/aries-cloudagent-loadgenerator). It configures the load generator specifically to reproduce AcaPy "Revocation registry metadata not found" Errors.
 
+## Install Dependencies
+- docker
+- docker-compose
+
 ## Run the Load Generator
 ```
 ./setup/manage.sh start
