@@ -1,4 +1,12 @@
+server:
+    tomcat:
+        threads:
+            max: 200 # Maximum amount of worker threads.
+        max-connections: 8192 # default size is 8192
+
 spring:
+    application:
+        name: spring-load-generator
     datasource:
         url: jdbc:postgresql://localhost:5432/
         username: postgres
@@ -10,17 +18,29 @@ spring:
 logging:
     config: classpath:logback-spring.xml
 
+management:
+    endpoints:
+        web:
+            exposure:
+                include: "*"
+
 issuer-verifier:
     acapy:
         api-key:
         url: 'http://localhost:10000'
         http-timeout-in-seconds: 60
+    multitenancy:
+        enabled: false
+        wallet-type: askar
+        register-did-endpoint: http://localhost:9000/register
+        webhook-endpoint-url: http://host.docker.internal:8080/acapy-webhook
+        sub-wallet-name: host.docker.internal
     wallet-db-name: wallet_db
 
 holder:
     acapy:
         api-key:
-        urls: 'http://localhost:10110, http://localhost:10210, http://localhost:10310, http://localhost:10410, http://localhost:10510, http://localhost:10610, http://localhost:10710, http://localhost:10810, http://localhost:10910, http://localhost:11010'
+        urls: 'http://localhost:10010'
         http-timeout-in-seconds: 60
 
 test-runners:
@@ -29,12 +49,12 @@ test-runners:
         number-of-total-iterations: 100
         number-of-parallel-iterations: 5
     constant-load-runner:
-        active: false
+        active: true
         number-of-total-iterations: 100
         number-of-iterations-per-minute: 30
         thread-pool-size: 4
     increasing-load-runner:
-        active: true
+        active: false
         peak-duration-in-minutes: 2
         sleep-between-peaks-in-minutes: 1
         initial-number-of-iterations-per-minute: 150
@@ -50,6 +70,8 @@ test-flows:
         use-revocable-credentials: true
         revocation-registry-size: 500
         check-non-revoked: true
+        revoke-credentials: true
+        credential-revocation-batch-size: 5
         use-oob-instead-of-connection: false
     issuer-flow:
         active: false

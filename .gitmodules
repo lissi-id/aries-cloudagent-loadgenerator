@@ -1,6 +1,12 @@
 [submodule "setup/von-network"]
 	path = setup/von-network
 	url = https://github.com/bcgov/von-network.git
-[submodule "setup/indy-tails-server"]
-	path = setup/indy-tails-server
+[submodule "setup/agents/indy-tails-server"]
+	path = setup/agents/indy-tails-server
 	url = https://github.com/bcgov/indy-tails-server
+[submodule "setup/agents/patroni"]
+	path = setup/agents/patroni
+	url = https://github.com/zalando/patroni
+[submodule "setup/agents/acapy"]
+	path = setup/agents/acapy
+	url = https://github.com/hyperledger/aries-cloudagent-python
