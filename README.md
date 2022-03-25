@@ -57,4 +57,4 @@ and start the debugging.
 }
 ```
 
-Finally, you can start the load-generator from the IDE.
+Finally, you can start the load-generator from the IDE or by running `./mvnw spring-boot:run`.
